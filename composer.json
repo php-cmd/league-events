@@ -5,6 +5,7 @@
     "keywords": [
         "cmdbus",
         "command bus",
+        "league events",
         "event dispatcher",
         "psr14",
         "mezzio"
