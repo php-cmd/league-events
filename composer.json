@@ -37,7 +37,8 @@
         "php-cmd/cmd-bus": "^0.3.0",
         "beberlei/assert": "^3.3",
         "league/event": "^3.0",
-        "psr/container": "^2.0"
+        "psr/container": "^2.0",
+        "webware/mezzio-eventdispatcher": "0.1.x-dev"
     },
     "require-dev": {
         "laminas/laminas-coding-standard": "^3.0.1",
