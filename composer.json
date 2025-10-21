@@ -1,0 +1,83 @@
+{
+    "name": "php-cmd/league-events",
+    "description": "League EventDispatcher support for CmdBus",
+    "license": "BSD-3-Clause",
+    "keywords": [
+        "cmdbus",
+        "command bus",
+        "league events",
+        "event dispatcher",
+        "psr14",
+        "mezzio"
+    ],
+    "homepage": "https://github.com/php-cmd/league-events",
+    "support": {
+        "issues": "https://github.com/php-cmd/league-events/issues",
+        "source": "https://github.com/php-cmd/league-events"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true,
+        "platform": {
+            "php": "8.2.99"
+        },
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "laminas/laminas-component-installer": true
+        }
+    },
+    "extra": {
+        "laminas": {
+            "config-provider": "PhpCmd\\Event\\ConfigProvider"
+        }
+    },
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
+        "php-cmd/cmd-bus": "^0.3.0",
+        "beberlei/assert": "^3.3",
+        "league/event": "^3.0",
+        "psr/container": "^2.0",
+        "webware/mezzio-eventdispatcher": "0.1.x-dev"
+    },
+    "require-dev": {
+        "laminas/laminas-coding-standard": "^3.0.1",
+        "laminas/laminas-servicemanager": "^4.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpunit/phpunit": "^11.5.42"
+    },
+    "conflict": {
+        "php-cmd/laminas-events": "*"
+    },
+    "suggest": {
+        "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpCmd\\Event\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpCmdTest\\Event\\": "test/unit/",
+            "PhpCmdIntegrationTest\\Event\\": "test/integration/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@static-analysis",
+            "@test",
+            "@test-integration"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always --testsuite \"unit test\"",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "test-integration": "phpunit --colors=always --testsuite \"integration test\"",
+        "static-analysis": "vendor/bin/phpstan analyse",
+        "sa-update-baseline": "vendor/bin/phpstan analyse --generate-baseline",
+        "upload-coverage": "coveralls -v"
+    }
+}
