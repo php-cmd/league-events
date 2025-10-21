@@ -47,6 +47,9 @@
         "phpstan/phpstan-phpunit": "^2.0",
         "phpunit/phpunit": "^11.5.42"
     },
+    "conflict": {
+        "php-cmd/laminas-events": "*"
+    },
     "suggest": {
         "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
     },
@@ -57,8 +60,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpCmd\\EventTest\\": "test/unit/",
-            "PhpCmd\\EventIntegrationTest\\": "test/integration/"
+            "PhpCmdTest\\Event\\": "test/unit/",
+            "PhpCmdIntegrationTest\\Event\\": "test/integration/"
         }
     },
     "scripts": {
