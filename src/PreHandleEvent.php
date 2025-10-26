@@ -10,10 +10,15 @@ use Webware\Event\MutableEvent;
 final class PreHandleEvent extends MutableEvent
 {
     public function __construct(
-        private CommandInterface $command,
+        private readonly CommandInterface $command,
     ) {
         parent::__construct(
             target: $command
         );
+    }
+
+    public function getCommand(): CommandInterface
+    {
+        return $this->command;
     }
 }

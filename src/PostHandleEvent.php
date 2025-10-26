@@ -16,4 +16,9 @@ final class PostHandleEvent extends MutableEvent
             target: $command
         );
     }
+
+    public function getCommand(): CommandInterface
+    {
+        return $this->command;
+    }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PhpCmd\Event\Middleware;
 
-use League\Event\EventDispatcherAwareBehavior;
 use League\Event\EventDispatcherAware;
+use League\Event\EventDispatcherAwareBehavior;
 use Override;
 use PhpCmd\CmdBus\Command\CommandResult;
 use PhpCmd\CmdBus\CommandHandlerInterface;
