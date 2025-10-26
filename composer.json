@@ -34,7 +34,7 @@
     },
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "php-cmd/cmd-bus": "^0.3.0",
+        "php-cmd/cmd-bus": "^0.4.0",
         "beberlei/assert": "^3.3",
         "league/event": "^3.0",
         "psr/container": "^2.0",

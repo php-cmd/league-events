@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace PhpCmd\Event\Middleware;
 
-use League\Event\EventDispatcherAwareBehavior;
 use League\Event\EventDispatcherAware;
+use League\Event\EventDispatcherAwareBehavior;
 use Override;
 use PhpCmd\CmdBus\Command\CommandResult;
 use PhpCmd\CmdBus\CommandHandlerInterface;
@@ -25,8 +25,8 @@ final class PostHandleMiddleware implements MiddlewareInterface, EventDispatcher
         // Custom processing logic for this middleware
         if ($command instanceof CommandResult) {
             $this->eventDispatcher()->dispatch(new PostHandleEvent($command));
-            // Return the result of the command
-            return $command->getResult();
+            // Return the CommandResult
+            return $command;
         }
         return $handler->handle($command);
     }

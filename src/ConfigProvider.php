@@ -9,34 +9,43 @@ use Webware\Event\Container\EventDispatcherAwareDelegator;
 
 final class ConfigProvider
 {
+    /**
+     * @return array<string, mixed>
+     */
     public function __invoke(): array
     {
         return [
-            'dependencies' => $this->getDependencies(),
+            'dependencies'     => $this->getDependencies(),
             BusProvider::class => [
-                BusProvider::MIDDLEWARE_PIPELINE_KEY  => $this->getPipeline(),
-            ]
+                BusProvider::MIDDLEWARE_PIPELINE_KEY => $this->getPipeline(),
+            ],
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getDependencies(): array
     {
         return [
             'delegators' => [
-                Middleware\PreHandleMiddleware::class => [
+                Middleware\PreHandleMiddleware::class  => [
                     EventDispatcherAwareDelegator::class,
                 ],
                 Middleware\PostHandleMiddleware::class => [
                     EventDispatcherAwareDelegator::class,
                 ],
             ],
-            'invokables'  => [
+            'invokables' => [
                 Middleware\PreHandleMiddleware::class  => Middleware\PreHandleMiddleware::class,
                 Middleware\PostHandleMiddleware::class => Middleware\PostHandleMiddleware::class,
             ],
         ];
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getPipeline(): array
     {
         return [
