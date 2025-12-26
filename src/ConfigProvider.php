@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PhpCmd\Event;
+namespace Webware\CommandBus\Event;
 
-use PhpCmd\CmdBus\ConfigProvider as BusProvider;
+use Webware\CommandBus\ConfigProvider as BusProvider;
 use Webware\Event\Container\EventDispatcherAwareDelegator;
 
 final class ConfigProvider

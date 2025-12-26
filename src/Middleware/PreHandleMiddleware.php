@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PhpCmd\Event\Middleware;
+namespace Webware\CommandBus\Event\Middleware;
 
 use League\Event\EventDispatcherAware;
 use Override;
-use PhpCmd\CmdBus\CommandHandlerInterface;
-use PhpCmd\CmdBus\CommandInterface;
-use PhpCmd\CmdBus\Command\CommandResultInterface;
-use PhpCmd\CmdBus\MiddlewareInterface;
-use PhpCmd\Event\PreHandleEvent;
+use Webware\CommandBus\CommandHandlerInterface;
+use Webware\CommandBus\CommandInterface;
+use Webware\CommandBus\Command\CommandResultInterface;
+use Webware\CommandBus\MiddlewareInterface;
+use Webware\CommandBus\Event\PreHandleEvent;
 use Webware\Event\EventDispatcherAwareTrait;
 
 final readonly class PreHandleMiddleware implements MiddlewareInterface, EventDispatcherAware

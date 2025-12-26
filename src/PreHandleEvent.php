@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PhpCmd\Event;
+namespace Webware\CommandBus\Event;
 
-use PhpCmd\CmdBus\CommandInterface;
+use Webware\CommandBus\CommandInterface;
 use Webware\Event\MutableEvent;
 
 final class PreHandleEvent extends MutableEvent

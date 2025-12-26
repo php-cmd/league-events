@@ -1,19 +1,18 @@
 {
-    "name": "php-cmd/league-events",
-    "description": "League EventDispatcher support for CmdBus",
+    "name": "webware/league-events",
+    "description": "League EventDispatcher support for webware/command-bus",
     "license": "BSD-3-Clause",
     "keywords": [
-        "cmdbus",
         "command bus",
         "league events",
         "event dispatcher",
         "psr14",
         "mezzio"
     ],
-    "homepage": "https://github.com/php-cmd/league-events",
+    "homepage": "https://github.com/tyrsson/league-events",
     "support": {
-        "issues": "https://github.com/php-cmd/league-events/issues",
-        "source": "https://github.com/php-cmd/league-events"
+        "issues": "https://github.com/tyrsson/league-events/issues",
+        "source": "https://github.com/tyrsson/league-events"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -29,12 +28,12 @@
     },
     "extra": {
         "laminas": {
-            "config-provider": "PhpCmd\\Event\\ConfigProvider"
+            "config-provider": "Webware\\CommandBus\\Event\\ConfigProvider"
         }
     },
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
-        "php-cmd/cmd-bus": "^0.4.0",
+        "webware/command-bus": "^0.4.0",
         "beberlei/assert": "^3.3",
         "league/event": "^3.0",
         "psr/container": "^2.0",
@@ -48,26 +47,26 @@
         "phpunit/phpunit": "^11.5.42"
     },
     "conflict": {
-        "php-cmd/laminas-events": "*"
+        "webware/laminas-events": "*"
     },
     "suggest": {
         "laminas/laminas-servicemanager": "Laminas\\ServiceManager component"
     },
     "autoload": {
         "psr-4": {
-            "PhpCmd\\Event\\": "src/"
+            "Webware\\CommandBus\\Event\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "PhpCmdTest\\Event\\": "test/unit/",
-            "PhpCmdIntegrationTest\\Event\\": "test/integration/"
+            "WebwareTest\\CommandBus\\Event\\": "test/unit/",
+            "WebwareIntegrationTest\\CommandBus\\Event\\": "test/integration/"
         }
     },
     "scripts": {
         "check": [
             "@cs-check",
-            "@static-analysis",
+            "@sa",
             "@test",
             "@test-integration"
         ],
@@ -76,8 +75,9 @@
         "test": "phpunit --colors=always --testsuite \"unit test\"",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "test-integration": "phpunit --colors=always --testsuite \"integration test\"",
-        "static-analysis": "vendor/bin/phpstan analyse",
-        "sa-update-baseline": "vendor/bin/phpstan analyse --generate-baseline",
+        "sa": "vendor/bin/phpstan analyse --memory-limit=256M",
+        "sa-gen-baseline": "vendor/bin/phpstan analyse --memory-limit=256M --generate-baseline",
+        "sa-verbose": "vendor/bin/phpstan analyse --memory-limit=256M -vv",
         "upload-coverage": "coveralls -v"
     }
 }
