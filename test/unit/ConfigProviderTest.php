@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace WebwareTest\CommandBus\Event;
 
-use Laminas\ServiceManager\Factory\InvokableFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;

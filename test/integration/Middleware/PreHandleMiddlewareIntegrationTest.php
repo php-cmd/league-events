@@ -18,9 +18,6 @@ use Webware\CommandBus\Event\ConfigProvider;
 use Webware\CommandBus\Event\Middleware\PreHandleMiddleware;
 use Webware\CommandBus\Event\PreHandleEvent;
 
-use function get_class;
-use function time;
-
 final class PreHandleMiddlewareIntegrationTest extends TestCase
 {
     private ServiceManager $container;

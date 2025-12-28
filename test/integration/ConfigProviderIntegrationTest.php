@@ -8,7 +8,6 @@ use Laminas\ServiceManager\Factory\InvokableFactory;
 use Laminas\ServiceManager\ServiceManager;
 use League\Event\EventDispatcher;
 use PHPUnit\Framework\TestCase;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use Webware\CommandBus\CommandBusInterface;
 use Webware\CommandBus\ConfigProvider as BusProvider;
 use Webware\CommandBus\Event\ConfigProvider;
@@ -59,9 +58,9 @@ final class ConfigProviderIntegrationTest extends TestCase
                 return $dispatcher;
             },
         ];
-        $container      = new ServiceManager($dependencies);
-        $preMiddleware  = $container->get(PreHandleMiddleware::class);
-        $postMiddleware = $container->get(PostHandleMiddleware::class);
+        $container                = new ServiceManager($dependencies);
+        $preMiddleware            = $container->get(PreHandleMiddleware::class);
+        $postMiddleware           = $container->get(PostHandleMiddleware::class);
 
         // Test that event dispatcher is working by checking if events can be dispatched
         $this->assertInstanceOf(EventDispatcher::class, $preMiddleware->getEventDispatcher());
