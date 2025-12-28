@@ -81,7 +81,7 @@ For detailed installation instructions, see the [Installation Guide](docs/Instal
 
 The package provides two middleware components that integrate with the command bus:
 
-```
+```text
 ┌─────────────────────────────────────┐
 │         Command Dispatched          │
 └────────────────┬────────────────────┘
