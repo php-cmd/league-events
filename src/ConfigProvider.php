@@ -18,7 +18,10 @@ final class ConfigProvider
      *          factories: array<class-string, class-string>
      *      },
      *      Webware\CommandBus\CommandBusInterface: array{
-     *         Webware\CommandBus\ConfigProvider::MIDDLEWARE_PIPELINE_KEY: array<array{middleware: class-string, priority?: int}>
+     *         Webware\CommandBus\ConfigProvider::MIDDLEWARE_PIPELINE_KEY: array<array{
+     *                                                                              middleware: class-string,
+     *                                                                              priority?: int
+     *                                                                        }>
      *      }
      * }
      */
