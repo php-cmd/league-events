@@ -9,8 +9,8 @@ use Override;
 use Webware\CommandBus\Command\CommandResultInterface;
 use Webware\CommandBus\CommandHandlerInterface;
 use Webware\CommandBus\CommandInterface;
-use Webware\CommandBus\MiddlewareInterface;
 use Webware\CommandBus\Event\PostHandleEvent;
+use Webware\CommandBus\MiddlewareInterface;
 use Webware\Event\EventDispatcherAwareTrait;
 
 final readonly class PostHandleMiddleware implements MiddlewareInterface, EventDispatcherAware

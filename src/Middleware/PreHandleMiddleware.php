@@ -6,11 +6,11 @@ namespace Webware\CommandBus\Event\Middleware;
 
 use League\Event\EventDispatcherAware;
 use Override;
+use Webware\CommandBus\Command\CommandResultInterface;
 use Webware\CommandBus\CommandHandlerInterface;
 use Webware\CommandBus\CommandInterface;
-use Webware\CommandBus\Command\CommandResultInterface;
-use Webware\CommandBus\MiddlewareInterface;
 use Webware\CommandBus\Event\PreHandleEvent;
+use Webware\CommandBus\MiddlewareInterface;
 use Webware\Event\EventDispatcherAwareTrait;
 
 final readonly class PreHandleMiddleware implements MiddlewareInterface, EventDispatcherAware
