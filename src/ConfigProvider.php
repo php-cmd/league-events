@@ -4,26 +4,42 @@ declare(strict_types=1);
 
 namespace Webware\CommandBus\Event;
 
+use Laminas\ServiceManager\Factory;
+use Webware\CommandBus\CommandBusInterface;
 use Webware\CommandBus\ConfigProvider as BusProvider;
 use Webware\Event\Container\EventDispatcherAwareDelegator;
 
 final class ConfigProvider
 {
     /**
-     * @return array<string, mixed>
+     * @phpstan-return array{
+     *      dependencies: array{
+     *          delegators: array<class-string, list<class-string>>,
+     *          factories: array<class-string, class-string>
+     *      },
+     *      Webware\CommandBus\CommandBusInterface: array{
+     *         Webware\CommandBus\ConfigProvider::MIDDLEWARE_PIPELINE_KEY: array<array{
+     *                                                                              middleware: class-string,
+     *                                                                              priority?: int
+     *                                                                        }>
+     *      }
+     * }
      */
     public function __invoke(): array
     {
         return [
-            'dependencies'     => $this->getDependencies(),
-            BusProvider::class => [
+            'dependencies'             => $this->getDependencies(),
+            CommandBusInterface::class => [
                 BusProvider::MIDDLEWARE_PIPELINE_KEY => $this->getPipeline(),
             ],
         ];
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array{
+     *     'delegators': array<class-string, list<class-string>>,
+     *     'factories': array<class-string, class-string>
+     * }
      */
     public function getDependencies(): array
     {
@@ -36,24 +52,24 @@ final class ConfigProvider
                     EventDispatcherAwareDelegator::class,
                 ],
             ],
-            'invokables' => [
-                Middleware\PreHandleMiddleware::class  => Middleware\PreHandleMiddleware::class,
-                Middleware\PostHandleMiddleware::class => Middleware\PostHandleMiddleware::class,
+            'factories'  => [
+                Middleware\PreHandleMiddleware::class  => Factory\InvokableFactory::class,
+                Middleware\PostHandleMiddleware::class => Factory\InvokableFactory::class,
             ],
         ];
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<array{middleware: class-string, priority: int}>
      */
     public function getPipeline(): array
     {
         return [
-            'pre_handle'  => [
+            [
                 'middleware' => Middleware\PreHandleMiddleware::class,
                 'priority'   => 100,
             ],
-            'post_handle' => [
+            [
                 'middleware' => Middleware\PostHandleMiddleware::class,
                 'priority'   => -100,
             ],
